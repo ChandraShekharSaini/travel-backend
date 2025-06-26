@@ -10,7 +10,12 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({extended:true}))
+app.use(cors({
+    origin:"https://aesthetic-starlight-bffcf5.netlify.app",
+    credentials:true,
+     
+}));
 
 // Root route
 app.get("/", (req, res) => {
@@ -19,9 +24,12 @@ app.get("/", (req, res) => {
 
 // MongoDB connection
 mongoose
-  .connect("mongodb+srv://chandrashekharsaini322:cZiMGEueo84UAhBk@travel.d2zlzuf.mongodb.net/?retryWrites=true&w=majority&appName=travel", {
-    dbName: "travel_blog",
-  })
+  .connect(
+    "mongodb+srv://chandrashekharsaini322:cZiMGEueo84UAhBk@travel.d2zlzuf.mongodb.net/?retryWrites=true&w=majority&appName=travel",
+    {
+      dbName: "travel_blog",
+    }
+  )
   .then(() => {
     console.log("MongoDB connected successfully!");
     // Initialize destinations if none exist
@@ -162,7 +170,7 @@ app.delete("/api/messages/:id", async (req, res) => {
 });
 
 // Server setup
-const port =  3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
