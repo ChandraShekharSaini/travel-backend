@@ -127,6 +127,10 @@ app.get('/api/messages', async (req, res) => {
     }
 });
 
+app.get("/lot",(req, res,next)=>{
+    res.send("My Travel Website")
+})
+
 // Add a new message
 app.post('/api/messages', async (req, res) => {
     try {
