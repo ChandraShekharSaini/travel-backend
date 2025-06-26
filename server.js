@@ -6,7 +6,6 @@ import cors from "cors";
 import User from "./models/User.js";
 import Destination from "./models/Destination.js";
 import Message from "./models/Message.js";
-
 const app = express();
 
 // Middleware
@@ -20,7 +19,7 @@ app.get("/", (req, res) => {
 
 // MongoDB connection
 mongoose
-  .connect("mongodb://localhost:27017/", {
+  .connect("mongodb+srv://chandrashekharsaini322:cZiMGEueo84UAhBk@travel.d2zlzuf.mongodb.net/?retryWrites=true&w=majority&appName=travel", {
     dbName: "travel_blog",
   })
   .then(() => {
